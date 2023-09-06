@@ -22,6 +22,15 @@ const RandomQuote = () => {
     author: "G. Michael Hopf.",
   });
 
+  // Link Quote to Twitter
+  const twitter = () => {
+    window.open(
+      `https://twitter.com/intent/twwet?text=${quote.text} - ${
+        quote.author.split(",")[0]
+      }`
+    );
+  };
+
   loadQuotes();
 
   return (
@@ -30,7 +39,7 @@ const RandomQuote = () => {
       <div>
         <div className="line"></div>
         <div className="bottom">
-          <div className="author">{quote.author}</div>
+          <div className="author">- {quote.author.split(",")[0]}</div>
           <div className="icons">
             <img
               src={Refresh_Icon}
@@ -39,7 +48,13 @@ const RandomQuote = () => {
               }}
               alt=""
             />
-            <img src={Twitter_Icon} alt="" />
+            <img
+              src={Twitter_Icon}
+              onClick={() => {
+                twitter();
+              }}
+              alt=""
+            />
           </div>
         </div>
       </div>
